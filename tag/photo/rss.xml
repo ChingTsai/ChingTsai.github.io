@@ -12,6 +12,33 @@
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
+	  <title>Filter 初體驗</title>
+	  <link>//Filter-%E5%88%9D%E9%AB%94%E9%A9%97</link>
+	  <author>Ching Tsai</author>
+	  <pubDate>2016-03-06T00:00:00+08:00</pubDate>
+	  <guid>//Filter-%E5%88%9D%E9%AB%94%E9%A9%97</guid>
+	  <description><![CDATA[
+	     <p>由於本身就有再攝影，所以希望這個 Blog 的圖片儘量都能用自己拍的照片。我對於拍照期望就是能還原最原始當下的情況，所以以往對於濾鏡的使用都嗤之以鼻，認為自己不會用到。不過在客製這個 Blog 的時候，當我把之前 Template 的預設圖換成自己的圖的時候，就總是覺得哪裡怪怪的，挑來挑去都找不到適合的。後來才發現如過要用來裝飾 Blog 用普通色調的圖片就會現得格格不入。如此想想還是嘗試一下濾鏡。</p>
+
+<p>原本打算用 <strong>MAC 照片</strong> 來調，雖然 <strong>照片</strong> 裡的工具用來修圖已經足以，不過如果要調色系的話卻太陽春且繁瑣。後來上網找了下發現了<a href="https://chrome.google.com/webstore/detail/pixlr-touch-up/jklljiahjgoglchglekebfljnmbaleig?hl=zh-tw">Pixlr Touch Up</a> 這個 <strong>自動桌子</strong> 出品的 <strong>Chrome App</strong> ， 不過這個 App bug 頗多，有機率會當掉，且如果圖太大會有雜線和做旋轉的時候會破圖，所以建議使用前先縮一下圖。不過裡面的濾鏡還算多元，對於我來說免費的 App 能做到這樣我已經很滿足了，以下列幾個自認為套的還不錯的幾張 Before After 的比較圖：</p>
+
+<p><img src="assets/images/filter_asset_001.jpg" alt="fornt_page" title="Front page">
+Blog 封面設計上要放上標語，所以就不適合太花俏的背景的顏色，所以我就使用 <code>Unicolor-&gt;Joyce</code> 把背景轉成單色系，來托襯標題。
+<img src="assets/images/filter_asset_002.jpg" alt="fornt_page">
+這張再拍攝的時候，其實是下著雨，不過由於我把快門調到 1/1250 ， 並且我用 <code>Classic-&gt;Peter</code> 把色調轉成冷冽，所以看起來頗有下雪的FU。
+<img src="assets/images/filter_asset_003.jpg" alt="fornt_page">
+這張是在大阪環球影城的霍格華茲拍攝的，原始的圖片看起就只是個陰森森的危樓，不過用 <code>Vintage-&gt;Kevin</code> 用誇張的對比，和飽和色使他一瞬間有了奇幻感。
+<img src="assets/images/filter_asset_004.jpg" alt="fornt_page">
+原本金碧輝煌的鐘面就已經很有架勢了，不過用 <code>Classic-&gt;Josh</code> 把色調轉成紅銅色，並加深陰影，也是別有風味。
+<img src="assets/images/filter_asset_007.jpg" alt="fornt_page">
+這個 <code>Classic-&gt;Hagrid</code> 用在食物上真的是犯規阿，可以看到右邊銳化很多，把鴨胸紋理，肉汁以及色澤都突顯出來，並加深不少飽和度，真的讓人胃口大開。</p>
+
+<p>總結一下，我不難理解為什麼濾鏡會這麼受歡迎，有時候即使主題只是地上一株雜草，抑或是曝光調爛了一堆噪點，用個濾鏡東抹西抹一下，看起來是還很文青，真的很方便。不過在嘗試的時候，還是發現有些濾鏡過分調高飽和，或加上一堆暈輝，讓整畫面變得一沱混雜，所以濾鏡真的要慎選。</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
 	  <title>Looking-Glass house</title>
 	  <link>//looking-glass-house</link>
 	  <author>Ching Tsai</author>
