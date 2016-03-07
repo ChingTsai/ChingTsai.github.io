@@ -120,14 +120,17 @@
 
 <h3>Pygments</h3>
 
-<p>首先 Jekyll 得標色其實是用一個 python 的 Syntax highlighter [Pygments][1] 所 gen 出來的，Pygments 其實非常強大，支援100多種語言並且輸出成各式各樣的格式，這裡我們是使用 <code>html</code>。 所以首先我們要先下載做新版本的 [Pygments][1] ， 並用 python 安裝。</p>
+<p>首先 Jekyll 得標色其實是用一個 python 的 Syntax highlighter <a href="http://pygments.org/">Pygments</a> 所 gen 出來的，Pygments 其實非常強大，支援100多種語言並且輸出成各式各樣的格式，這裡我們是使用 <code>html</code>。 所以首先我們要先下載做新版本的 <a href="http://pygments.org/">Pygments</a> ， 並用 python 安裝。</p>
+
+<p>The Syntax Highlighting style is actually extracted form a generic syntax highlighter written in python called <a href="http://pygments.org/">Pygments</a>. Pygments supports 300 languages and other text formats. For here, we are using the  <code>html</code> style. First of all, download the latest version of <a href="http://pygments.org/">Pygments</a>, and install it with python.</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tar</span> <span class="n">xf</span> <span class="n">Pygments</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mf">3.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">cd</span> <span class="n">Pygments</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">3</span>
 <span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </code></pre></div>
 <h3>Configuration</h3>
 
-<p>再來確認你的 <code>_config.yml</code> 當中的 <code>highlighter</code> 設為 pygments</p>
+<p>再來確認你的 <code>_config.yml</code> 當中的 <code>highlighter</code> 設為 <code>pygments</code>
+Make sure you set <code>highlighter</code> into <code>pygments</code> in your <code>_config.yml</code>.</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Jykell configuration</span>
 <span class="n">markdown</span><span class="p">:</span> <span class="n">redcarpet</span>
 <span class="n">highlighter</span><span class="p">:</span> <span class="n">pygments</span>
@@ -135,14 +138,20 @@
 </code></pre></div>
 <p>把你的路徑移到 Template 的 css 資料夾下 ， 以我的 Template 是在 <code>/assets/css</code> 你可以看到會有一個 <code>syntax.css</code> ，這個就是用來標色的 style 。</p>
 
+<p>Change you directory to the css folder in your Template. In my case, it is located at <code>/assets/css</code>. You should find a <code>syntax.css</code> which denotes the syntax highlighting.</p>
+
 <h3>Select Highlight Style</h3>
 
-<p>此時你可以到 <a href="http://pygments.org/demo/3913075/">Pygments官網</a> 去選擇你喜歡的 style ， 這裡我使用 <code>monokai</code> 這個 style 。 最後下以下指令，把新的 syntax 套色導到 <code>syntax.css</code> 。</p>
+<p>此時你可以到 <a href="http://pygments.org/demo/3913075/">Pygments官網</a> 去選擇你喜歡的 style ， 這裡我使用 <code>monokai</code> 這個 style 。 最後下以下指令，把新的 syntax 套色導到 <code>syntax.css</code>。</p>
+
+<p>At this point, you can pick your favorite color highlighting style <a href="http://pygments.org/demo/3913075/">here</a>. I am using style  <code>monokai</code> in this demonstration. Finally, enter the scripts below to replace the  <code>syntax.css</code>。</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pygmentize</span> <span class="o">-</span><span class="n">S</span> <span class="n">monokai</span> <span class="o">-</span><span class="n">f</span> <span class="n">html</span> <span class="o">&gt;</span> <span class="n">syntax</span><span class="o">.</span><span class="n">css</span>
 </code></pre></div>
 <h3>Background Color</h3>
 
 <p>最後要注意的是，code block 底色的 css 並不是寫在 <code>syntax.css</code> 裡面，所以如果你是從白底套色改成黑底套色， 可能就會發現字都變不見了，所以只要手動修改 code block 底色就可以了，通常都是 <code>pre</code> 這個 class 的 <code>background-color</code> ， 以我的 Template 就在 <code>screen.css</code> 裡面。</p>
+
+<p>Last but not least, if you change the style from a white background-color theme to a background-color theme, you will notice that the words are disappeared. This is because that the code block background-color is not denoted in the <code>syntax.css</code>. You should change it manually. It is usually denoted in  <code>pre</code>  css class. So I simply change the <code>pre</code> class <code>background-color</code> in <code>screen.css</code>.</p>
 
 
         </section>
@@ -204,7 +213,7 @@
         <a class="read-next-story " style="background-image: url(/assets/images/cover_2.jpg)" href="/LeetCode-147-Insertion-Sort-List">
             <section class="post">
                 <h2>LeetCode 147 : Insertion Sort List</h2>
-                <p>>Sort a linked list using insertion sort. ### Initial Though 這題很有意思， insert sort 可能是大家最熟悉的 n^2...</p>
+                <p>>Sort a linked list using insertion sort. ### Initial Though 這題很有意思， insertion sort 可能是大家最熟悉的 n^2...</p>
             </section>
         </a>
     
