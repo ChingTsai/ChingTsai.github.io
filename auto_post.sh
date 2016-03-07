@@ -3,13 +3,18 @@ read title
 printf "Tags : "
 read tags
 
+#Remove punctuations
+parse=`echo $title | sed -e "s/[[:punct:]]//g"`
+#Replace space with -
+parse=`echo $parse | sed -e "s/ /-/g"`
+
 create_date=`date +"%Y-%m-%d"`
-md_name="_posts/$create_date-$title.md"
+md_name="_posts/$create_date-$parse.md"
 
 echo "---" > $md_name
 echo "layout : post" >> $md_name
 echo "cover: false" >> $md_name
-echo "title: $title" >> $md_name
+echo "title: '$title'" >> $md_name
 echo "tags: $tags" >> $md_name
 echo "subclass: 'post tag-$tags'" >> $md_name
 echo "categories: 'CT'" >> $md_name
