@@ -8,7 +8,17 @@
     <title>Make Today Better Than Yesterday</title>
     <link>http://ChingTsai.github.io/chingtsai.github.io/</link>
     <description>Code, Food, Photo and some Geek stuff ...</description>
-    <pubDate>Mon, 07 Mar 2016 13:00:00 +0800</pubDate>
+    <pubDate>Mon, 07 Mar 2016 14:32:49 +0800</pubDate>
+    <item>
+      <title>LeetCode 147 : Insertion Sort List</title>
+      <link>http://ChingTsai.github.io/chingtsai.github.io//LeetCode-147-Insertion-Sort-List</link>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Sort a linked list using insertion sort.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+      <pubDate>Mon, 07 Mar 2016 14:32:49 +0800</pubDate>
+      <dc:date>2016-03-07T14:32:49+08:00</dc:date>
+    </item>
     <item>
       <title>Jekyll Markdown Syntax Highlighting</title>
       <link>http://ChingTsai.github.io/chingtsai.github.io//Jekyll-Markdown-Syntax-Highlighting</link>
@@ -98,6 +108,6 @@ For example,
       <pubDate>Sun, 26 Nov 1865 18:18:00 +0800</pubDate>
       <dc:date>1865-11-26T18:18:00+08:00</dc:date>
     </item>
-    <dc:date>2016-03-07T13:00:00+08:00</dc:date>
+    <dc:date>2016-03-07T14:32:49+08:00</dc:date>
   </channel>
 </rss>

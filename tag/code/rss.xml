@@ -12,6 +12,58 @@
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
+	  <title>LeetCode 147 : Insertion Sort List</title>
+	  <link>//LeetCode-147-Insertion-Sort-List</link>
+	  <author>Ching Tsai</author>
+	  <pubDate>2016-03-07T14:32:49+08:00</pubDate>
+	  <guid>//LeetCode-147-Insertion-Sort-List</guid>
+	  <description><![CDATA[
+	     <blockquote>
+<p>Sort a linked list using insertion sort.</p>
+</blockquote>
+
+<h3>Initial Though</h3>
+
+<p>這題很有意思， insert sort 可能是大家最熟悉的 n^2 sorting ， 原本認為用 array 來作 insert 要花很多時間在做資料搬移，但當做在單向的 LinkedList 卻用變得更棘手。</p>
+
+<h3>Guide</h3>
+
+<p>第一個遇到的問題就是要 maintain 前後兩個 node 的 next 要能指對。所以當有一個直鏈：<code>A-&gt;B-&gt;C</code> 若要用 <code>D</code> 取代  <code>B</code> 我就要確保 <code>A-&gt;D</code> 和 <code>D-&gt;C</code> 。 這個可以用一個暫存的 Object pre 來儲存。第二個問題就是head 是沒有 parent ， 所以要用一個空的dummy_head 來當作假的 head。 最後就是這題用一個很不像傳統 insertion sort 的解法，也就是分成兩個鏈，一個是dummy 開頭的 sorted 鏈 ， 一個就是原本 input 進來的鏈。所以每次從 input 鏈抓一個 node <code>cur</code> ， 然後到 sorted 鏈裡找到是適合的地方插進去，這樣的作法會比用同一條鏈還 maintain 兩個鏈來的容易很多。</p>
+
+<h3>Code</h3>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**</span>
+<span class="cm"> * Definition for singly-linked list.</span>
+<span class="cm"> * public class ListNode {</span>
+<span class="cm"> *     int val;</span>
+<span class="cm"> *     ListNode next;</span>
+<span class="cm"> *     ListNode(int x) { val = x; }</span>
+<span class="cm"> * }</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="n">ListNode</span> <span class="n">dummy_head</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">insertionSortList</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
+        <span class="n">ListNode</span> <span class="n">pre</span><span class="o">,</span><span class="n">cur</span><span class="o">,</span><span class="n">iter</span><span class="o">;</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">cur</span> <span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+            <span class="n">iter</span> <span class="o">=</span> <span class="n">dummy_head</span><span class="o">;</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">val</span> <span class="o">&lt;</span> <span class="n">cur</span><span class="o">.</span><span class="na">val</span><span class="o">){</span>
+                <span class="n">iter</span><span class="o">=</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">pre</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">cur</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">iter</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">pre</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">dummy_head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+	  ]]></description>
+	</item>
+
+	<item>
 	  <title>Jekyll Markdown Syntax Highlighting</title>
 	  <link>//Jekyll-Markdown-Syntax-Highlighting</link>
 	  <author>Ching Tsai</author>
