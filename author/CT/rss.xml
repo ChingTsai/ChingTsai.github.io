@@ -28,7 +28,7 @@
 
 <h3>Guide</h3>
 
-<p>第一個遇到的問題就是要 maintain 前後兩個 node 的 next 要能指對。所以當有一個直鏈：<code>A-&gt;B-&gt;C</code> 若要用 <code>D</code> 取代  <code>B</code> 我就要確保 <code>A-&gt;D</code> 和 <code>D-&gt;C</code> 。 這個可以用一個暫存的 Object pre 來儲存。第二個問題就是head 是沒有 parent ， 所以要用一個空的dummy_head 來當作假的 head。 最後就是這題用一個很不像傳統 insertion sort 的解法，也就是分成兩個鏈，一個是dummy 開頭的 sorted 鏈 ， 一個就是原本 input 進來的鏈。所以每次從 input 鏈抓一個 node <code>cur</code> ， 然後到 sorted 鏈裡找到是適合的地方插進去，這樣的作法會比用同一條鏈還 maintain 兩個鏈來的容易很多。</p>
+<p>第一個遇到的問題就是要 maintain 前後兩個 node 的 next 要能指對。所以當有一個直鏈：<code>A-&gt;B-&gt;C</code> 若要用 <code>D</code> 取代  <code>B</code> 我就要確保 <code>A-&gt;D</code> 和 <code>D-&gt;C</code> 。 這個可以用一個暫存的 Object pre 來儲存。第二個問題就是 head 是沒有 parent ， 所以要用一個空的dummy_head 來當作假的 head。 最後就是這題用一個很不像傳統 insertion sort 的解法，也就是分成兩個鏈，一個是 dummy 開頭的 sorted 鏈 ， 一個就是原本 input 進來的鏈。所以每次從 input 鏈抓一個 node <code>cur</code> ， 然後到 sorted 鏈裡找到是適合的地方插進去，這樣的作法會比用同一條鏈還 maintain 兩個鏈來的容易很多。</p>
 
 <h3>Code</h3>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**</span>
