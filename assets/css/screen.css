@@ -353,12 +353,14 @@ pre {
     margin: 0 0 1.75em 0;
     border: #E3EDF3 1px solid;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
+    padding-left: 10px;
+    padding-right : 10px;
     font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.9em;
     white-space: pre;
     overflow: auto;
-    background: #F7FAFB;
+    background: #272822;
     border-radius: 3px;
 }
 
@@ -1098,6 +1100,13 @@ body:not(.post-template) .post-title {
     transform: translateX(-50%);
 }
 
+/* Keep English and Chinese word look nicer */
+.post-content > p{
+
+    font-family: sans-serif;
+
+}
+
 .footnotes {
     font-style: italic;
     font-size: 1.3rem;
@@ -1607,7 +1616,7 @@ body:not(.post-template) .post-title {
    ========================================================================== */
 
 @media only screen and (max-width: 900px) {
-   
+
     .main-header {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
