@@ -354,8 +354,6 @@ pre {
     border: #E3EDF3 1px solid;
     width: 100%;
     padding: 20px;
-    padding-left: 10px;
-    padding-right : 10px;
     font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.9em;
     white-space: pre;
@@ -919,7 +917,7 @@ body.nav-opened .nav {
 .post {
     position: relative;
     width: 80%;
-    max-width: 710px;
+    max-width: 800px;
     margin: 4rem auto;
     padding-bottom: 4rem;
     /*border-bottom: #EBF2F6 1px solid;*/
