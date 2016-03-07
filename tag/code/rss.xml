@@ -12,10 +12,48 @@
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
+	  <title>Jekyll Markdown Syntax Highlighting</title>
+	  <link>//Jekyll-Markdown-Syntax-Highlighting</link>
+	  <author>Ching Tsai</author>
+	  <pubDate>2016-03-07T13:00:00+08:00</pubDate>
+	  <guid>//Jekyll-Markdown-Syntax-Highlighting</guid>
+	  <description><![CDATA[
+	     <p>當初會被吸引來用 Jekyll 還來搭建這個 Blog ，其中一個很大的原因，也是因為內建的 Markdown expression 可以很方便的幫一些範例 Code 做美美的 Syntax Highlighting。不過 Highlighting 的 style 通常都被 Template 寫死在 css 裡。所以當我在用這個 Template 我就很樣把預設的 style 換掉，所以在做了一下 Serve 找到了修改的方法。</p>
+
+<h3>Pygments</h3>
+
+<p>首先 Jekyll 得標色其實是用一個 python 的 Syntax highlighter [Pygments][1] 所 gen 出來的，Pygments 其實非常強大，支援100多種語言並且輸出成各式各樣的格式，這裡我們是使用 <code>html</code>。 所以首先我們要先下載做新版本的 [Pygments][1] ， 並用 python 安裝。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tar</span> <span class="n">xf</span> <span class="n">Pygments</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mf">3.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">Pygments</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">3</span>
+<span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</code></pre></div>
+<h3>Configuration</h3>
+
+<p>再來確認你的 <code>_config.yml</code> 當中的 <code>highlighter</code> 設為 pygments</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Jykell configuration</span>
+<span class="n">markdown</span><span class="p">:</span> <span class="n">redcarpet</span>
+<span class="n">highlighter</span><span class="p">:</span> <span class="n">pygments</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>把你的路徑移到 Template 的 css 資料夾下 ， 以我的 Template 是在 <code>/assets/css</code> 你可以看到會有一個 <code>syntax.css</code> ，這個就是用來標色的 style 。</p>
+
+<h3>Select Highlight Style</h3>
+
+<p>此時你可以到 <a href="http://pygments.org/demo/3913075/">Pygments官網</a> 去選擇你喜歡的 style ， 這裡我使用 <code>monokai</code> 這個 style 。 最後下以下指令，把新的 syntax 套色導到 <code>syntax.css</code> 。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pygmentize</span> <span class="o">-</span><span class="n">S</span> <span class="n">monokai</span> <span class="o">-</span><span class="n">f</span> <span class="n">html</span> <span class="o">&gt;</span> <span class="n">syntax</span><span class="o">.</span><span class="n">css</span>
+</code></pre></div>
+<h3>Background Color</h3>
+
+<p>最後要注意的是，code block 底色的 css 並不是寫在 <code>syntax.css</code> 裡面，所以如果你是從白底套色改成黑底套色， 可能就會發現字都變不見了，所以只要手動修改 code block 底色就可以了，通常都是 <code>pre</code> 這個 class 的 <code>background-color</code> ， 以我的 Template 就在 <code>screen.css</code> 裡面。</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
 	  <title>LeetCode 46 : Permutations</title>
 	  <link>//LeetCode-46-Permutations</link>
 	  <author>Ching Tsai</author>
-	  <pubDate>2016-03-07T00:00:00+08:00</pubDate>
+	  <pubDate>2016-03-07T10:18:00+08:00</pubDate>
 	  <guid>//LeetCode-46-Permutations</guid>
 	  <description><![CDATA[
 	     <blockquote>
