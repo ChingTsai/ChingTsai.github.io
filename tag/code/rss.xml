@@ -12,6 +12,120 @@
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
+	  <title>Shell Script : Jekyll Markdown Generator</title>
+	  <link>//Shell-Script-Jekyll-Markdown-Generator</link>
+	  <author>Ching Tsai</author>
+	  <pubDate>2016-03-07T22:56:00+08:00</pubDate>
+	  <guid>//Shell-Script-Jekyll-Markdown-Generator</guid>
+	  <description><![CDATA[
+	     <p>很多人都問我說為什麼要用 MAC？除了做工精良，續航力高，還有一點非常棒的就是他可以和 Linux 共用大部分的 Unix Script。以下就用一個小小的例子來解釋能寫一些簡單的 Script 可以讓工程師一天過的更愉快。</p>
+
+<p>一開始的緣由在於 Jekyll 的 Markdown 有一個既定的格式，就是檔名要是 <code>日期-標題.md</code> 並且內部要以特定的 tag ，不過如果每次發一篇文章都還要去填寫日期的話，並修改檔名的話，就顯得太費工夫了，所以初始的概念就是能 input <code>title</code> 和 <code>tag</code> ， 然後剩下重複的格式就交由 Script。</p>
+
+<h3>I/O</h3>
+
+<p>所以首先就先做簡單 I/O 來得到 <code>title</code> 和 <code>tag</code> 。</p>
+
+<p>First of all, we should handle some I/O to get the input arguments <code>title</code> and <code>tag</code> .</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">printf</span> <span class="s">&quot;Title : &quot;</span>
+<span class="n">read</span> <span class="n">title</span>
+<span class="n">printf</span> <span class="s">&quot;Tags : &quot;</span>
+<span class="n">read</span> <span class="n">tags</span>
+</code></pre></div>
+<h3>Parse</h3>
+
+<p>再來由於我們要直接把 <code>title</code> 拿來當做檔名，不過由於其中多少會有一些標點符號，在這裡我們就要先把他們移除。所以我們用 <code>sed</code> 來做取代的動作，由於 <code>sed</code> 支援正規表示，所以我們可以用 <code>[[:punct:]]</code> 來指定標點符號，若之後有延伸的取代動作的話可以參考<a href="https://en.wikipedia.org/wiki/Regular_expression">這裡</a>更多正規表示。</p>
+
+<p>Next, since there will be some punctuations in the title (e.g. .,;/?), we should remove them before we use it as part of the filename later. Here, we are using <code>sed</code> to remove the punctuations. Fortunately, <code>sed</code> support regular expression, so we can use <code>[[:punct:]]</code> to represent the punctuations and remove them. You could find more regular expression <a href="https://en.wikipedia.org/wiki/Regular_expression">here</a> , if we want to do more extensions.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">parse</span><span class="o">=</span><span class="sb">`echo $title | sed -e &quot;s/[[:punct:]]//g&quot;`</span>
+</code></pre></div>
+<p>最後再把空白都換成一槓。
+Also, we do the same handling to the space, but this time we replace it with <code>-</code>.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">parse</span><span class="o">=</span><span class="sb">`echo $parse | sed -e &quot;s/ /-/g&quot;`</span>
+</code></pre></div>
+<h3>Date</h3>
+
+<p>再來我們要取得 Post 當下的時間，把它加到檔名裡，這裡使用 <code>date</code> 來取得時間並且用內建輸出syntax 。這裡列舉一些簡單的表示方式。</p>
+
+<p>We also need to get the time as the create time when we lunch the script. We use <code>date</code> to get then current time, and since it supports output format , we can simply transform the date to the format we want. Here is a handy lookup table.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Example</th>
+<th style="text-align: center">Format</th>
+<th style="text-align: center">Outcome</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">年(year)</td>
+<td style="text-align: center">％Y</td>
+<td style="text-align: center">2016</td>
+</tr>
+<tr>
+<td style="text-align: center">月(month)</td>
+<td style="text-align: center">%m</td>
+<td style="text-align: center">03</td>
+</tr>
+<tr>
+<td style="text-align: center">日(day)</td>
+<td style="text-align: center">%d</td>
+<td style="text-align: center">07</td>
+</tr>
+<tr>
+<td style="text-align: center">時(hour)</td>
+<td style="text-align: center">%H</td>
+<td style="text-align: center">16</td>
+</tr>
+<tr>
+<td style="text-align: center">分(minute)</td>
+<td style="text-align: center">%M</td>
+<td style="text-align: center">12</td>
+</tr>
+<tr>
+<td style="text-align: center">秒(second)</td>
+<td style="text-align: center">%S</td>
+<td style="text-align: center">00</td>
+</tr>
+</tbody></table>
+
+<p>如此我們可以把現在時間轉成我們要的格式。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># 2016-03-07</span>
+<span class="n">create_date</span><span class="o">=</span><span class="sb">`date +&quot;%Y-%m-%d&quot;`</span>
+<span class="c"># 2016-03-07 22:56:00</span>
+<span class="n">create_date_time</span><span class="o">=</span><span class="sb">`date +&quot;%Y-%m-%d %H:%M:%S&quot;`</span>
+</code></pre></div>
+<h3>Demo</h3>
+
+<p>最後展示一下使用的情況</p>
+
+<p>Here is the screenshot.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;</span> <span class="n">sh</span> <span class="n">auto_post</span><span class="o">.</span><span class="n">sh</span>
+  <span class="n">Title</span> <span class="p">:</span> <span class="n">Shell</span> <span class="n">Script</span> <span class="p">:</span> <span class="n">Jekyll</span> <span class="n">Markdown</span> <span class="n">Generator</span>
+  <span class="n">Tags</span> <span class="p">:</span> <span class="n">code</span>
+<span class="o">&gt;</span> <span class="n">ls</span> <span class="n">_posts</span><span class="o">/</span>
+  <span class="mi">2016</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="n">Shell</span><span class="o">-</span><span class="n">Script</span><span class="o">-</span><span class="n">Jekyll</span><span class="o">-</span><span class="n">Markdown</span><span class="o">-</span><span class="n">Generator</span><span class="o">.</span><span class="n">md</span>
+<span class="o">&gt;</span> <span class="n">cat</span> <span class="n">_posts</span><span class="o">/</span><span class="mi">2016</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="n">Shell</span><span class="o">-</span><span class="n">Script</span><span class="o">-</span><span class="n">Jekyll</span><span class="o">-</span><span class="n">Markdown</span><span class="o">-</span><span class="n">Generator</span><span class="o">.</span><span class="n">md</span>
+  <span class="o">---</span>
+  <span class="n">layout</span> <span class="p">:</span> <span class="n">post</span>
+  <span class="n">cover</span><span class="p">:</span> <span class="n">false</span>
+  <span class="n">title</span><span class="p">:</span> <span class="s">&#39;Shell Script : Jekyll Markdown Generator&#39;</span>
+  <span class="n">date</span><span class="p">:</span> <span class="s">&#39;2016-03-07 22:56:00&#39;</span>
+  <span class="n">tags</span><span class="p">:</span> <span class="n">code</span>
+  <span class="n">subclass</span><span class="p">:</span> <span class="s">&#39;post tag-code&#39;</span>
+  <span class="n">categories</span><span class="p">:</span> <span class="s">&#39;&#39;</span>
+  <span class="n">cover</span><span class="p">:</span> <span class="s">&#39;&#39;</span>
+  <span class="o">---</span>
+</code></pre></div>
+<h3>Source Code</h3>
+
+<p>由於不同得 template 會有不同 Front Matter ， 所以可以自行視需求多加argument 進去，不過作法是雷同的。可以從<a href="https://github.com/ChingTsai/Jekyll-Markdown-Generator">這裡</a>拿到原始碼。</p>
+
+<p>Since different Jekyll template has different Front Matter, feel free to add more arguments in the script to make it compatible to your Jekyll template. You can find the Source code <a href="https://github.com/ChingTsai/Jekyll-Markdown-Generator">here</a>.</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
 	  <title>LeetCode 147 : Insertion Sort List</title>
 	  <link>//LeetCode-147-Insertion-Sort-List</link>
 	  <author>Ching Tsai</author>
@@ -83,8 +197,9 @@
 </code></pre></div>
 <h3>Configuration</h3>
 
-<p>再來確認你的 <code>_config.yml</code> 當中的 <code>highlighter</code> 設為 <code>pygments</code>
-Make sure you set <code>highlighter</code> into <code>pygments</code> in your <code>_config.yml</code>.</p>
+<p>再來確認你的 <code>_config.yml</code> 當中的 <code>highlighter</code> 設為 <code>pygments</code></p>
+
+<p>Make sure you set <code>highlighter</code> into <code>pygments</code> in your <code>_config.yml</code>.</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Jykell configuration</span>
 <span class="n">markdown</span><span class="p">:</span> <span class="n">redcarpet</span>
 <span class="n">highlighter</span><span class="p">:</span> <span class="n">pygments</span>

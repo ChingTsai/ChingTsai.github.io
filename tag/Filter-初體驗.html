@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Jekyll Markdown Syntax Highlighting</title>
+    <title>Filter 初體驗</title>
     <meta name="description" content="Make Today Better Than Yesterday - Code, Food, Photo and some Geek stuff ..." />
 
     <meta name="HandheldFriendly" content="True" />
@@ -84,9 +84,9 @@
 <!-- Everything inside the #post tags pulls data from the post -->
 <!-- #post -->
 
-<header class="main-header post-head " style="background-image: url(/assets/images/cover_2.jpg) ">
+<header class="main-header post-head " style="background-image: url(/assets/images/post_filter.jpg) ">
     <nav class="main-nav  overlay  clearfix">
-        <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
+        
         
             <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
@@ -95,19 +95,19 @@
 
 <main class="content" role="main">
 
-    <article class="post tag-code">
+    <article class="post tag-photo">
 
         <header class="post-header">
-            <h1 class="post-title">Jekyll Markdown Syntax Highlighting</h1>
+            <h1 class="post-title">Filter 初體驗</h1>
             <section class="post-meta">
             <!-- <a href='/'>Ching Tsai</a> -->
-            <time class="post-date" datetime="2016-03-07">07 Mar 2016</time>
+            <time class="post-date" datetime="2016-03-06">06 Mar 2016</time>
                 <!-- [[tags prefix=" on "]] -->
                  
                 on 
                 
                     
-                       <a href='/tag/code'>Code</a>
+                       <a href='/tag/photo'>Photo</a>
                        
                 
                 
@@ -116,43 +116,22 @@
 
         <section class="post-content">
             
-            <p>當初會被吸引來用 Jekyll 還來搭建這個 Blog ，其中一個很大的原因，也是因為內建的 Markdown expression 可以很方便的幫一些範例 Code 做美美的 Syntax Highlighting。不過 Highlighting 的 style 通常都被 Template 寫死在 css 裡。所以當我在用這個 Template 我就很樣把預設的 style 換掉，所以在做了一下 Serve 找到了修改的方法。</p>
+            <p>由於本身就有再攝影，所以希望這個 Blog 的圖片儘量都能用自己拍的照片。我對於拍照期望就是能還原最原始當下的情況，所以以往對於濾鏡的使用都嗤之以鼻，認為自己不會用到。不過在客製這個 Blog 的時候，當我把之前 Template 的預設圖換成自己的圖的時候，就總是覺得哪裡怪怪的，挑來挑去都找不到適合的。後來才發現如過要用來裝飾 Blog 用普通色調的圖片就會現得格格不入。如此想想還是嘗試一下濾鏡。</p>
 
-<h3>Pygments</h3>
+<p>原本打算用 <strong>MAC 照片</strong> 來調，雖然 <strong>照片</strong> 裡的工具用來修圖已經足以，不過如果要調色系的話卻太陽春且繁瑣。後來上網找了下發現了<a href="https://chrome.google.com/webstore/detail/pixlr-touch-up/jklljiahjgoglchglekebfljnmbaleig?hl=zh-tw">Pixlr Touch Up</a> 這個 <strong>自動桌子</strong> 出品的 <strong>Chrome App</strong> ， 不過這個 App bug 頗多，有機率會當掉，且如果圖太大會有雜線和做旋轉的時候會破圖，所以建議使用前先縮一下圖。不過裡面的濾鏡還算多元，對於我來說免費的 App 能做到這樣我已經很滿足了，以下列幾個自認為套的還不錯的幾張 Before After 的比較圖：</p>
 
-<p>首先 Jekyll 得標色其實是用一個 python 的 Syntax highlighter <a href="http://pygments.org/">Pygments</a> 所 gen 出來的，Pygments 其實非常強大，支援100多種語言並且輸出成各式各樣的格式，這裡我們是使用 <code>html</code>。 所以首先我們要先下載做新版本的 <a href="http://pygments.org/">Pygments</a> ， 並用 python 安裝。</p>
+<p><img src="assets/images/filter_asset_001.jpg" alt="fornt_page" title="Front page">
+Blog 封面設計上要放上標語，所以就不適合太花俏的背景的顏色，所以我就使用 <code>Unicolor-&gt;Joyce</code> 把背景轉成單色系，來托襯標題。
+<img src="assets/images/filter_asset_002.jpg" alt="fornt_page">
+這張再拍攝的時候，其實是下著雨，不過由於我把快門調到 1/1250 ， 並且我用 <code>Classic-&gt;Peter</code> 把色調轉成冷冽，所以看起來頗有下雪的FU。
+<img src="assets/images/filter_asset_003.jpg" alt="fornt_page">
+這張是在大阪環球影城的霍格華茲拍攝的，原始的圖片看起就只是個陰森森的危樓，不過用 <code>Vintage-&gt;Kevin</code> 用誇張的對比，和飽和色使他一瞬間有了奇幻感。
+<img src="assets/images/filter_asset_004.jpg" alt="fornt_page">
+原本金碧輝煌的鐘面就已經很有架勢了，不過用 <code>Classic-&gt;Josh</code> 把色調轉成紅銅色，並加深陰影，也是別有風味。
+<img src="assets/images/filter_asset_007.jpg" alt="fornt_page">
+這個 <code>Classic-&gt;Hagrid</code> 用在食物上真的是犯規阿，可以看到右邊銳化很多，把鴨胸紋理，肉汁以及色澤都突顯出來，並加深不少飽和度，真的讓人胃口大開。</p>
 
-<p>The Syntax Highlighting style is actually extracted form a generic syntax highlighter written in python called <a href="http://pygments.org/">Pygments</a>. Pygments supports 300 languages and other text formats. For here, we are using the  <code>html</code> style. First of all, download the latest version of <a href="http://pygments.org/">Pygments</a>, and install it with python.</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tar</span> <span class="n">xf</span> <span class="n">Pygments</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mf">3.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-<span class="n">cd</span> <span class="n">Pygments</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">3</span>
-<span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
-</code></pre></div>
-<h3>Configuration</h3>
-
-<p>再來確認你的 <code>_config.yml</code> 當中的 <code>highlighter</code> 設為 <code>pygments</code></p>
-
-<p>Make sure you set <code>highlighter</code> into <code>pygments</code> in your <code>_config.yml</code>.</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Jykell configuration</span>
-<span class="n">markdown</span><span class="p">:</span> <span class="n">redcarpet</span>
-<span class="n">highlighter</span><span class="p">:</span> <span class="n">pygments</span>
-<span class="o">...</span>
-</code></pre></div>
-<p>把你的路徑移到 Template 的 css 資料夾下 ， 以我的 Template 是在 <code>/assets/css</code> 你可以看到會有一個 <code>syntax.css</code> ，這個就是用來標色的 style 。</p>
-
-<p>Change you directory to the css folder in your Template. In my case, it is located at <code>/assets/css</code>. You should find a <code>syntax.css</code> which denotes the syntax highlighting.</p>
-
-<h3>Select Highlight Style</h3>
-
-<p>此時你可以到 <a href="http://pygments.org/demo/3913075/">Pygments官網</a> 去選擇你喜歡的 style ， 這裡我使用 <code>monokai</code> 這個 style 。 最後下以下指令，把新的 syntax 套色導到 <code>syntax.css</code>。</p>
-
-<p>At this point, you can pick your favorite color highlighting style <a href="http://pygments.org/demo/3913075/">here</a>. I am using style  <code>monokai</code> in this demonstration. Finally, enter the scripts below to replace the  <code>syntax.css</code>。</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">pygmentize</span> <span class="o">-</span><span class="n">S</span> <span class="n">monokai</span> <span class="o">-</span><span class="n">f</span> <span class="n">html</span> <span class="o">&gt;</span> <span class="n">syntax</span><span class="o">.</span><span class="n">css</span>
-</code></pre></div>
-<h3>Background Color</h3>
-
-<p>最後要注意的是，code block 底色的 css 並不是寫在 <code>syntax.css</code> 裡面，所以如果你是從白底套色改成黑底套色， 可能就會發現字都變不見了，所以只要手動修改 code block 底色就可以了，通常都是 <code>pre</code> 這個 class 的 <code>background-color</code> ， 以我的 Template 就在 <code>screen.css</code> 裡面。</p>
-
-<p>Last but not least, if you change the style from a white background-color theme to a background-color theme, you will notice that the words are disappeared. This is because that the code block background-color is not denoted in the <code>syntax.css</code>. You should change it manually. It is usually denoted in  <code>pre</code>  css class. So I simply change the <code>pre</code> class <code>background-color</code> in <code>screen.css</code>.</p>
+<p>總結一下，我不難理解為什麼濾鏡會這麼受歡迎，有時候即使主題只是地上一株雜草，抑或是曝光調爛了一堆噪點，用個濾鏡東抹西抹一下，看起來是還很文青，真的很方便。不過在嘗試的時候，還是發現有些濾鏡過分調高飽和，或加上一堆暈輝，讓整畫面變得一沱混雜，所以濾鏡真的要慎選。</p>
 
 
         </section>
@@ -184,15 +163,15 @@
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="http://twitter.com/share?text=Jekyll Markdown Syntax Highlighting&amp;url=http://ChingTsai.github.io/chingtsai.github.io/Jekyll-Markdown-Syntax-Highlighting"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Filter 初體驗&amp;url=http://ChingTsai.github.io/chingtsai.github.io/Filter-%E5%88%9D%E9%AB%94%E9%A9%97"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://ChingTsai.github.io/chingtsai.github.io/Jekyll-Markdown-Syntax-Highlighting"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://ChingTsai.github.io/chingtsai.github.io/Filter-%E5%88%9D%E9%AB%94%E9%A9%97"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://ChingTsai.github.io/chingtsai.github.io/Jekyll-Markdown-Syntax-Highlighting"
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://ChingTsai.github.io/chingtsai.github.io/Filter-%E5%88%9D%E9%AB%94%E9%A9%97"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
@@ -211,20 +190,20 @@
 
     <!-- [[! next_post ]] -->
     
-        <a class="read-next-story " style="background-image: url(/assets/images/cover_2.jpg)" href="/LeetCode-147-Insertion-Sort-List">
+        <a class="read-next-story " style="background-image: url(/assets/images/cover_2.jpg)" href="/LeetCode-46-Permutations">
             <section class="post">
-                <h2>LeetCode 147 : Insertion Sort List</h2>
-                <p>>Sort a linked list using insertion sort. ### Initial Though 這題很有意思， insertion sort 可能是大家最熟悉的 n^2...</p>
+                <h2>LeetCode 46 : Permutations</h2>
+                <p>>Given a collection of distinct numbers, return all possible permutations. For example, [1,2,3] have the...</p>
             </section>
         </a>
     
     <!-- [[! /next_post ]] -->
     <!-- [[! prev_post ]] -->
     
-        <a class="read-next-story prev " style="background-image: url(/assets/images/cover_2.jpg)" href="/LeetCode-46-Permutations">
+        <a class="read-next-story prev " style="background-image: url(/assets/images/cover_1.jpg)" href="/down-the-rabbit-hole">
             <section class="post">
-                <h2>LeetCode 46 : Permutations</h2>
-                <p>Given a collection of distinct numbers, return all possible permutations. For example, [1,2,3] have the...</p>
+                <h2>Down The Rabbit Hole</h2>
+                <p>Alice was beginning to get very tired of sitting by her sister on the bank,...</p>
             </section>
         </a>
     
