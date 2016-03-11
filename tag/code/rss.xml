@@ -57,7 +57,7 @@
 
 <p>有另一個指令 <code>chage</code> 可以限制某個帳號的有效時間 ， 不過如果要做到自動的解鎖的話就沒有現有的指令可以使用，所以這裡就引入一個很實用的排程指令 <code>at</code> ，這裡的排程是特定排程，非例行排程，也就是指定時間執行，不會重複定時執行。</p>
 
-<p>1.首先要開啟atd服務(CentOS 6 以下)</p>
+<p>1.首先要開啟 <code>atd</code> 服務(CentOS 6 以下)</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">service</span> <span class="n">atd</span> <span class="n">restart</span>
 </code></pre></div>
 <p>不想每次重開都開就記得下</p>
@@ -86,6 +86,10 @@
 <span class="n">atq</span>
 <span class="mi">21</span>  <span class="mi">2015</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">12</span> <span class="mi">16</span><span class="p">:</span><span class="mo">00</span> <span class="n">a</span> <span class="n">root</span>
 </code></pre></div>
+<h4>Reference</h4>
+
+<p><a href="http://linux.vbird.org/linux_basic/0410accountmanager.php">鳥哥的 Linux 私房菜</a></p>
+
 	  ]]></description>
 	</item>
 
