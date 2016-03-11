@@ -23,4 +23,5 @@ echo "categories: 'CT'" >> $md_name
 echo "cover: 'assets/images/cover2.jpg'" >> $md_name
 echo "navigation: True " >> $md_name
 echo "logo: 'assets/images/ghost.png'" >> $md_name
+echo "disqus: true" >> $md_name
 echo "---" >> $md_name
