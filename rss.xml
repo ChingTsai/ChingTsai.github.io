@@ -8,7 +8,15 @@
     <title>Make Today Better Than Yesterday</title>
     <link>http://ChingTsai.github.io/chingtsai.github.io/</link>
     <description>Code, Food, Photo and some Geek stuff ...</description>
-    <pubDate>Fri, 11 Mar 2016 11:05:43 +0800</pubDate>
+    <pubDate>Fri, 11 Mar 2016 16:09:36 +0800</pubDate>
+    <item>
+      <title>CentOS 網管小筆記 : 凍結帳號及強制登出</title>
+      <link>http://ChingTsai.github.io/chingtsai.github.io//CentOS-%E7%B6%B2%E7%AE%A1%E5%B0%8F%E7%AD%86%E8%A8%98-%E5%87%8D%E7%B5%90%E5%B8%B3%E8%99%9F%E5%8F%8A%E5%BC%B7%E5%88%B6%E7%99%BB%E5%87%BA</link>
+      <description>&lt;p&gt;以前曾經管理一個 8 node 的 cluster 一段時間，而當時有個需求就是再某一段時間要對整個 cluster 作封測，由於當時 cluster 有外借一個帳號給別人，所以就會擔心再封得時候其他人跑進來玩耍，這樣封測的結果就不準了。但是如果直接刪除帳號到時候再開給他，顯得麻煩，於是就 survey 了一下如何凍結帳號，最好是可以凍結後時間到了就會自動解鎖，設定完後就不用煩惱。&lt;/p&gt;
+</description>
+      <pubDate>Fri, 11 Mar 2016 16:09:36 +0800</pubDate>
+      <dc:date>2016-03-11T16:09:36+08:00</dc:date>
+    </item>
     <item>
       <title>LeetCode 94 : Binary Tree Inorder Traversal</title>
       <link>http://ChingTsai.github.io/chingtsai.github.io//LeetCode-94-Binary-Tree-Inorder-Traversal</link>
@@ -136,6 +144,6 @@ For example,
       <pubDate>Sun, 26 Nov 1865 18:18:00 +0800</pubDate>
       <dc:date>1865-11-26T18:18:00+08:00</dc:date>
     </item>
-    <dc:date>2016-03-11T11:05:43+08:00</dc:date>
+    <dc:date>2016-03-11T16:09:36+08:00</dc:date>
   </channel>
 </rss>
