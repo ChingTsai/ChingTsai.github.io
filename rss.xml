@@ -8,7 +8,16 @@
     <title>Make Today Better Than Yesterday</title>
     <link>http://ChingTsai.github.io/chingtsai.github.io/</link>
     <description>Code, Food, Photo and some Geek stuff ...</description>
-    <pubDate>Fri, 12 Aug 2016 13:28:31 +0800</pubDate>
+    <pubDate>Thu, 22 Sep 2016 09:16:48 +0800</pubDate>
+    <item>
+      <title>My new project on Github - BrakeValve</title>
+      <link>http://ChingTsai.github.io/chingtsai.github.io//My-new-project-on-Github-BrakeValve</link>
+      <description>&lt;p&gt;幾個月前和幾位朋友開啟了一個開源的專案 - &lt;a href=&quot;%E7%85%9E%E8%BB%8A%E9%96%A5&quot;&gt;BrakeValve&lt;/a&gt;，這個專案主要是為了幫助在 Steam 數位遊戲的銷售平台上面消費的使用者，
+決定要不要再某個時間點購買某個遊戲。 取名的來源是 Steam 背後的母公司是 Valve ，而取名叫做煞車閥是希望能幫購買者在一頭熱想購買遊戲得時候可以煞車冷靜一下 XDD&lt;/p&gt;
+</description>
+      <pubDate>Thu, 22 Sep 2016 09:16:48 +0800</pubDate>
+      <dc:date>2016-09-22T09:16:48+08:00</dc:date>
+    </item>
     <item>
       <title>First try in 3D printing (Topre to MX slider)</title>
       <link>http://ChingTsai.github.io/chingtsai.github.io//First-try-in-3D-printing-Topre-to-MX-slider</link>
@@ -112,6 +121,6 @@ For example,
       <pubDate>Sun, 06 Mar 2016 00:00:00 +0800</pubDate>
       <dc:date>2016-03-06T00:00:00+08:00</dc:date>
     </item>
-    <dc:date>2016-08-12T13:28:31+08:00</dc:date>
+    <dc:date>2016-09-22T09:16:48+08:00</dc:date>
   </channel>
 </rss>
