@@ -8,7 +8,15 @@
     <title>Make Today Better Than Yesterday</title>
     <link>http://ChingTsai.github.io/chingtsai.github.io/</link>
     <description>Code, Food, Photo and some Geek stuff ...</description>
-    <pubDate>Thu, 22 Sep 2016 09:16:48 +0800</pubDate>
+    <pubDate>Sun, 27 Nov 2016 16:02:54 +0800</pubDate>
+    <item>
+      <title>Fostex TH-X00 PH &amp; Ear Pad Experiment</title>
+      <link>http://ChingTsai.github.io/chingtsai.github.io//Fostex-THX00-PH-Ear-Pad-Experiment</link>
+      <description>&lt;p&gt;Fostex 和 Massdrop 合作的而出品的 TH-X00 系列算是補足了很多人想要重溫 Denon D 系列又買不下 TH-900 的需求。另我意外的是一直到 TH-X00的出現我才知道fostex 一直以來都幫 Denon 代工各種產品。由於 Massdrop 一直以團購募資合作為特色，所以借 Fostex 合作的機會不只重現原本 D 系列木殼外觀，另外還衍生出Mahogany（桃花心木）/ purple heart （紫心木）/ Ebony （黑檀木）等等版本。而我這次跟到的是紫心木的版本。&lt;/p&gt;
+</description>
+      <pubDate>Sun, 27 Nov 2016 16:02:54 +0800</pubDate>
+      <dc:date>2016-11-27T16:02:54+08:00</dc:date>
+    </item>
     <item>
       <title>My new project on Github - BrakeValve</title>
       <link>http://ChingTsai.github.io/chingtsai.github.io//My-new-project-on-Github-BrakeValve</link>
@@ -121,6 +129,6 @@ For example,
       <pubDate>Sun, 06 Mar 2016 00:00:00 +0800</pubDate>
       <dc:date>2016-03-06T00:00:00+08:00</dc:date>
     </item>
-    <dc:date>2016-09-22T09:16:48+08:00</dc:date>
+    <dc:date>2016-11-27T16:02:54+08:00</dc:date>
   </channel>
 </rss>
