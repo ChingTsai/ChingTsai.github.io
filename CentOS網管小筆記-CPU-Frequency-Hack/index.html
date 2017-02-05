@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>CentOS-網管小筆記 : CPU Frequency Hack</title>
+    <meta name="description" content="Make Today Better Than Yesterday - Code, Food, Photo and some Geek stuff ..." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="/page2/" />
+
+    <meta property="og:site_name" content="Make Today Better Than Yesterday" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Make Today Better Than Yesterday" />
+    <meta property="og:description" content="Code, Food, Photo and some Geek stuff ..." />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/assets/images/cover1.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Make Today Better Than Yesterday" />
+    <meta name="twitter:description" content="Code, Food, Photo and some Geek stuff ..." />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image:src" content="/assets/images/cover1.jpg" />
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Finding The Way Home",
+    "url": "/",
+    "image": "/assets/images/cover1.jpg",
+    "description": "Code, Food, Photo and some Geek stuff ..."
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Make Today Better Than Yesterday" href="/rss.xml" />
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/about">About</a></li>
+        <li class="nav-photo " role="presentation"><a href="/tag/photo">Photo</a></li>
+        <li class="nav-food " role="presentation"><a href="/tag/food">Food</a></li>
+        <li class="nav-geek " role="presentation"><a href="/tag/geek">Geek</a></li>
+        <li class="nav-code " role="presentation"><a href="/tag/code">Code</a></li>
+        <li class="nav-author " role="presentation"><a href="/author/CT">Author</a></li>
+
+    </ul>
+    <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/cover_2.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-code">
+
+        <header class="post-header">
+            <h1 class="post-title">CentOS-網管小筆記 : CPU Frequency Hack</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Ching Tsai</a> -->
+            <time class="post-date" datetime="2016-03-22">22 Mar 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on
+                
+                    
+                       <a href='/tag/code'>Code</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>基於之前比賽的需求，所以 survey 過 Linux 底下如何 ad-hoc 動態調整 CPU 頻率。在普通 consumer 硬體架構下，超頻降頻早已不是什麼稀奇的事情，不過在伺服器上並且在 Linux 下作這件事情就不是這麼常見。主要原因伺服器在設計上本來就是以穩定為主，如果你需要更高的頻率，你應該是要更換高頻率的CPU。這也為什麼 Intel Server class 的 CPU 會有這麼多型號。並且伺服器設計上就是必須要以最高效能的方式運作，不過在一些特殊的情況來說，有時候最高頻率的並不是最 efficiency 使用電源。闢如你有大量的 CPU core 作 Multi Agent simulation，可想像的是 Cores 大部分的時間都在 exchange 資訊，而不是作 Compute ， 所以提高頻率所增高的效率，並不有效。其實 OS 本身就已經自動調整頻率的功能，但這對於我來說並不足夠，因為調整等於是 unpredictable 是個 black box。由於當時比賽需要很精準的控制電量，並且確保所有程式都可在最有效的情況輸出，就需要有能手動控制頻率的技術。</p>
+
+<ul>
+<li>以下教學並不會為損壞你的設備負責，請確認自己了解以下指令的風險在繼續。</li>
+<li>以下這些指令都是 Linux 內建的，不過你會需要 root 權限。</li>
+<li>以下教學只適用於 Intel CPU</li>
+</ul>
+
+<h4>Know Your Equipment</h4>
+
+<p>首先必須了解自己的 CPU 型號，可以用下</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;</span> <span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span> <span class="o">|</span> <span class="n">grep</span> <span class="s">&#39;model name&#39;</span> <span class="o">-</span><span class="n">m</span> <span class="mi">1</span>
+  <span class="n">model</span> <span class="n">name</span>    <span class="p">:</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Xeon</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">CPU</span> <span class="n">E5</span><span class="o">-</span><span class="mi">2690</span> <span class="n">v3</span> <span class="err">@</span> <span class="mf">2.60</span><span class="n">GHz</span>
+</code></pre></div>
+<p>適用於以下的指令的最少會需要 v1 以後的CPU ，也就是 <code>Sandy Bridge-EP</code> 以後的。</p>
+
+<h4>ACPI modules</h4>
+
+<p>再來我們要打入 ACPI 的 Kernel Modules，ACPI (Advanced Configuration and Power Interface) 提供Kernel 可以更 fine-grain 控制硬體電源，以及更精準的讀數。</p>
+<div class="highlight"><pre><code class="language-perl" data-lang="perl"><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">modprobe</span> <span class="n">acpi</span><span class="o">-</span><span class="n">cpufreq</span>
+</code></pre></div>
+<p>若有以下資訊，有可能已經載入相對應的 Modules 。
+```perl</p>
+
+<blockquote>
+<p>modprobe: ERROR: could not insert &#39;acpi_cpufreq&#39;: Device or resource busy
+```</p>
+</blockquote>
+
+<h4>CPU Frequency Control</h4>
+
+<p>再來我們可以了解我們可以用的頻率有哪些</p>
+
+<p>先到以下位址</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span>
+<span class="o">&gt;</span> <span class="n">ls</span>
+  <span class="n">cpu0</span> <span class="n">cpu12</span> <span class="n">cpu16</span> <span class="n">cpu2</span> <span class="n">cpu23</span> <span class="n">cpu27</span> <span class="n">cpu30</span> <span class="n">cpu34</span> <span class="n">cpu38</span> <span class="n">cpu41</span> <span class="n">cpu45</span> <span class="n">cpu6</span> <span class="n">cpuidle</span> <span class="n">modalias</span> <span class="n">power</span> <span class="n">cpu1</span> <span class="n">cpu13</span> <span class="n">cpu17</span> <span class="n">cpu20</span> <span class="n">cpu24</span> <span class="n">cpu28</span> <span class="n">cpu31</span> <span class="n">cpu35</span> <span class="n">cpu39</span> <span class="n">cpu42</span> <span class="n">cpu46</span> <span class="n">cpu7</span> <span class="n">intel_pstate</span> <span class="n">offline</span> <span class="n">present</span> <span class="n">cpu10</span> <span class="n">cpu14</span> <span class="n">cpu18</span> <span class="n">cpu21</span> <span class="n">cpu25</span> <span class="n">cpu29</span> <span class="n">cpu32</span> <span class="n">cpu36</span> <span class="n">cpu4</span> <span class="n">cpu43</span> <span class="n">cpu47</span> <span class="n">cpu8</span> <span class="n">kernel_max</span> <span class="n">online</span> <span class="n">uevent</span> <span class="n">cpu11</span> <span class="n">cpu15</span> <span class="n">cpu19</span> <span class="n">cpu22</span> <span class="n">cpu26</span> <span class="n">cpu3</span> <span class="n">cpu33</span>  <span class="n">cpu37</span> <span class="n">cpu40</span> <span class="n">cpu44</span> <span class="n">cpu5</span> <span class="n">cpu9</span> <span class="n">microcode</span> <span class="n">possible</span>
+</code></pre></div>
+<p>這裡可以看到你可以控制所有的CPU ， 這裡如果你有開啟Hyper-Threading ，可以看到 cpu 數目會變 double ，這裡我們先隨便跳一個cpu。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">cpu0</span><span class="o">/</span><span class="n">cpufreq</span><span class="o">/</span>
+<span class="o">&gt;</span> <span class="n">ls</span>
+  <span class="n">affected_cpus</span> <span class="n">cpuinfo_max_freq</span> <span class="n">cpuinfo_transition_latency</span> <span class="n">scaling_available_governors</span> <span class="n">scaling_governor</span> <span class="n">scaling_min_freq</span> <span class="n">cpuinfo_cur_freq</span>  <span class="n">cpuinfo_min_freq</span> <span class="n">related_cpus</span> <span class="n">scaling_driver</span> <span class="n">scaling_max_freq</span> <span class="n">scaling_setspeed</span>
+</code></pre></div>
+<p>幾個東西可查看</p>
+
+<ul>
+<li><code>cpuinfo_min_freq</code> : CPU 可以調整的最低頻率</li>
+<li><code>cpuinfo_max_freq</code> : CPU 可以調整的最高頻率</li>
+</ul>
+
+<p>幾個比較重要的東西可以調</p>
+
+<ul>
+<li><code>scaling_min_freq</code> : CPU 運作下的最低頻率</li>
+<li><code>scaling_max_freq</code> : CPU 運作下的最高頻率</li>
+</ul>
+
+<p>所以你可以藉由調整的上述兩個 upper bound 和 lower bound ，來設定 CPU 頻率的運作時候的範圍調法如下</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;</span> <span class="n">echo</span> <span class="p">{</span><span class="err">欲調整的頻率</span><span class="p">}</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpu0</span><span class="o">/</span><span class="n">cpufreq</span><span class="o">/</span><span class="n">scaling_min_freq</span>
+<span class="n">example</span> <span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">echo</span> <span class="mi">2000000</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpu0</span><span class="o">/</span><span class="n">cpufreq</span><span class="o">/</span><span class="n">scaling_min_freq</span>
+</code></pre></div>
+<p>輸完後可以再 <code>cat</code> 一次來確認修改完成。</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/CT" style="background-image: url(/assets/images/ct.png)"><span class="hidden">'s Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/CT">Ching Tsai</a></h4>
+
+                
+                    <p> 每天努力學習的研究攻城獅，略懂平行運算，分散式系統及機器學習，平時偶爾攝影，興趣是看 YouTube 學煮菜。</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> Hsinchu, Taiwan</span>
+                    <span class="author-link icon-link"><a href="http://ChingTsai.github.io/chingtsai.github.io/"> ChingTsai.github.io/chingtsai.github.io/</a></span>
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=CentOS-網管小筆記 : CPU Frequency Hack&amp;url=http://ChingTsai.github.io/chingtsai.github.io/CentOS%E7%B6%B2%E7%AE%A1%E5%B0%8F%E7%AD%86%E8%A8%98-CPU-Frequency-Hack"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://ChingTsai.github.io/chingtsai.github.io/CentOS%E7%B6%B2%E7%AE%A1%E5%B0%8F%E7%AD%86%E8%A8%98-CPU-Frequency-Hack"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://ChingTsai.github.io/chingtsai.github.io/CentOS%E7%B6%B2%E7%AE%A1%E5%B0%8F%E7%AD%86%E8%A8%98-CPU-Frequency-Hack"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+      //var disqus_developer = 1;
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'maketodaybetterthanyesterday'; // required: replace example with your forum shortname
+        var disqus_identifier = '/CentOS%E7%B6%B2%E7%AE%A1%E5%B0%8F%E7%AD%86%E8%A8%98-CPU-Frequency-Hack';
+        var disqus_url = 'http://ChingTsai.github.io/chingtsai.github.io//CentOS%E7%B6%B2%E7%AE%A1%E5%B0%8F%E7%AD%86%E8%A8%98-CPU-Frequency-Hack';
+        //console.log(disqus_shortname+" "+disqus_identifier+" "+disqus_url);
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/cover_cake_1.jpg)" href="/%E6%8A%B9%E8%8C%B6%E5%8D%83%E5%B1%A4%E6%B4%BE%E8%A9%A6%E4%BD%9C">
+            <section class="post">
+                <h2>抹茶千層派試作</h2>
+                <p>終於有時間可以發一篇關於food的post了，我很喜歡看youtube來學料理，所以這一篇也不例外，由於在嘗試網路上的食譜的時候，往往都會遇到食譜所寫的和實際操作有落差，而這一篇主要是分享我嘗試食譜的過程心得，以及一些改進的想，希望可以幫到那些想要嘗試同一份食譜的人，也因此需要詳細教學以及食譜的可以到[這裡][1] ```java 派皮 ： - 低筋麵粉 240 g - 雞蛋 4 個 - 牛奶 650...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/cover_2.jpg)" href="/CentOS-%E7%B6%B2%E7%AE%A1%E5%B0%8F%E7%AD%86%E8%A8%98-%E5%87%8D%E7%B5%90%E5%B8%B3%E8%99%9F%E5%8F%8A%E5%BC%B7%E5%88%B6%E7%99%BB%E5%87%BA">
+            <section class="post">
+                <h2>CentOS 網管小筆記 : 凍結帳號及強制登出</h2>
+                <p>以前曾經管理一個 8 node 的 cluster 一段時間，而當時有個需求就是再某一段時間要對整個 cluster 作封測，由於當時 cluster 有外借一個帳號給別人，所以就會擔心再封得時候其他人跑進來玩耍，這樣封測的結果就不準了。但是如果直接刪除帳號到時候再開給他，顯得麻煩，於是就 survey 了一下如何凍結帳號，最好是可以凍結後時間到了就會自動解鎖，設定完後就不用煩惱。 以下的這些指令都是 Linux 內建的，不過你會需要...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">Make Today Better Than Yesterday</a> &copy; 2017</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', '', 'auto');
+	    ga('send', 'pageview');
+
+     </script>   
+</body>
+</html>

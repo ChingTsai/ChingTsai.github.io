@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Make Today Better Than Yesterday</title>
+    <title>Author</title>
     <meta name="description" content="Make Today Better Than Yesterday - Code, Food, Photo and some Geek stuff ..." />
 
     <meta name="HandheldFriendly" content="True" />
@@ -53,7 +53,7 @@
     <link rel="alternate" type="application/rss+xml" title="Make Today Better Than Yesterday" href="/rss.xml" />
 
 </head>
-<body class="tag-template nav-closed">
+<body class="paged archive-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -64,10 +64,10 @@
         <li class="nav-home " role="presentation"><a href="/">Home</a></li>
         <li class="nav-about " role="presentation"><a href="/about">About</a></li>
         <li class="nav-photo " role="presentation"><a href="/tag/photo">Photo</a></li>
-        <li class="nav-food  nav-current" role="presentation"><a href="/tag/food">Food</a></li>
+        <li class="nav-food " role="presentation"><a href="/tag/food">Food</a></li>
         <li class="nav-geek " role="presentation"><a href="/tag/geek">Geek</a></li>
         <li class="nav-code " role="presentation"><a href="/tag/code">Code</a></li>
-        <li class="nav-author " role="presentation"><a href="/author/CT">Author</a></li>
+        <li class="nav-author  nav-current" role="presentation"><a href="/author/CT">Author</a></li>
 
     </ul>
     <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a>
@@ -78,44 +78,55 @@
     <div class="site-wrapper">
 
         <!-- [[! Everything else gets inserted here ]] -->
-        <!-- < dynamically overriding backgrounds for tags as well as descriptions -->
-
-    
-
-
-<!-- < default}} -->
+        <!-- < default}} -->
 <!-- The tag above means - insert everything in this file into the [body] of the default.hbs template -->
 
-<!-- If we have a tag cover, display that - else blog cover - else nothing -->
-<header class="main-header tag-head " style="background-image: url(/assets/images/cover_4.jpg) ">
-    <nav class="main-nav overlay clearfix">
-        <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
-        
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
-        
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">Food</h1>
-            <h2 class="page-description">
+<!-- The big featured header -->
+
+<!-- Everything inside the #author tags pulls data from the author -->
+<!-- #author  -->
+    <header class="main-header author-head " style="background-image: url(/assets/images/cover_9_v2.jpg) ">
+        <nav class="main-nav overlay clearfix">
+            <a class="blog-logo" href="/"><img src="/assets/images/ghost.png" alt="Blog Logo" /></a>
             
-                Experience sharing
+                <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
             
-            </h2>
+        </nav>
+    </header>
+
+    <section class="author-profile inner">
+        
+        <figure class="author-image">
+            <div class="img" style="background-image: url(/assets/images/ct.png)"><span class="hidden">Ching Tsai's Picture</span></div>
+        </figure>
+        
+        <h1 class="author-title">Ching Tsai</h1>
+        
+            <h2 class="author-bio">每天努力學習的研究攻城獅，略懂平行運算，分散式系統及機器學習，平時偶爾攝影，興趣是看 YouTube 學煮菜。</h2>
+        
+        <div class="author-meta">
+            <span class="author-location icon-location">Hsinchu, Taiwan</span>
+            <span class="author-link icon-link"><a href="http://ChingTsai.github.io/chingtsai.github.io/">ChingTsai.github.io/chingtsai.github.io/</a></span>
+            <!-- <span class="author-stats"><i class="icon-stats"></i> [[plural ../pagination.total empty='No posts' singular='% post' plural='% posts']]</span> -->
+            <span class="author-stats"><i class="icon-stats"></i>11 posts</span>
         </div>
-    </div>
-</header>
+    </section>
+<!-- /author -->
 
 <!-- The main content area on the homepage -->
 <main id="content" class="content" role="main">
 
-    <!-- The tag below includes the post loop - partials/loop.hbs -->
+    <!-- The tag below includes the post loop - partials/loop.hbs  -->
         <!-- Previous/next page links - only displayed on page 2+ -->
     <div class="extra-pagination inner">
         
             <nav class="pagination" role="pagination">
     
-    <span class="page-number"> Page 1 of 1 </span>
+        
+            <a class="newer-posts" href="/author/CT/page2/" title="Previous Page">&laquo; Newer Posts</a>
+      
+    
+    <span class="page-number"> Page 3 of 3 </span>
      
 </nav>
         
@@ -125,12 +136,11 @@
     
     <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/%E7%9E%9E%E8%91%97%E7%88%B9%E5%A3%BD%E5%8F%B8">瞞著爹壽司</a></h2>
+            <h2 class="post-title"><a href="/Filter%20%E5%88%9D%E9%AB%94%E9%A9%97">Filter 初體驗</a></h2>
         </header>
         <section class="post-excerpt">
-            <p>
-今日造訪在微風附近巷弄的瞞著爹壽司，由於還在農曆過年期間，所以雖然是中午時段，但是還提供晚上1680的套餐，感謝家裏金主贊助～
- <a class="read-more" href="/%E7%9E%9E%E8%91%97%E7%88%B9%E5%A3%BD%E5%8F%B8">&raquo;</a></p>
+            <p>由於本身就有再攝影，所以希望這個 Blog 的圖片儘量都能用自己拍的照片。我對於拍照期望就是能還原最原始當下的情況，所以以往對於濾鏡的使用都嗤之以鼻，認為自己不會用到。不過在客製這個 Blog 的時候，當我把之前 Template 的預設圖換成自己的圖的時候，就總是覺得哪裡怪怪的，挑來挑去都找不到適合的。後來才發現如過要用來裝飾 Blog 用普通色調的圖片就會現得格格不入。如此想想還是嘗試一下濾鏡。
+ <a class="read-more" href="/Filter%20%E5%88%9D%E9%AB%94%E9%A9%97">&raquo;</a></p>
         </section>
         <footer class="post-meta">
             <img class="author-thumb" src="/assets/images/ct.png" alt="Author image" nopin="nopin" />
@@ -141,36 +151,11 @@
                 on
                 
                     
-                       <a href='/tag/food'>Food</a>
+                       <a href='/tag/photo'>Photo</a>
                     
                 
             
-            <time class="post-date" datetime="2017-02-02">02 Feb 2017</time>
-        </footer>
-    </article>
-    
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="/%E6%8A%B9%E8%8C%B6%E5%8D%83%E5%B1%A4%E6%B4%BE%E8%A9%A6%E4%BD%9C">抹茶千層派試作</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p>終於有時間可以發一篇關於food的post了，我很喜歡看youtube來學料理，所以這一篇也不例外，由於在嘗試網路上的食譜的時候，往往都會遇到食譜所寫的和實際操作有落差，而這一篇主要是分享我嘗試食譜的過程心得，以及一些改進的想，希望可以幫到那些想要嘗試同一份食譜的人，也因此需要詳細教學以及食譜的可以到這裡
- <a class="read-more" href="/%E6%8A%B9%E8%8C%B6%E5%8D%83%E5%B1%A4%E6%B4%BE%E8%A9%A6%E4%BD%9C">&raquo;</a></p>
-        </section>
-        <footer class="post-meta">
-            <img class="author-thumb" src="/assets/images/ct.png" alt="Author image" nopin="nopin" />
-            <!-- author -->
-            <a href='/author/CT'>Ching Tsai</a>
-            <!-- [[tags prefix=" on "]] -->
-            
-                on
-                
-                    
-                       <a href='/tag/food'>Food</a>
-                    
-                
-            
-            <time class="post-date" datetime="2016-08-11">11 Aug 2016</time>
+            <time class="post-date" datetime="2016-03-06">06 Mar 2016</time>
         </footer>
     </article>
     
@@ -179,7 +164,11 @@
     
         <nav class="pagination" role="pagination">
     
-    <span class="page-number"> Page 1 of 1 </span>
+        
+            <a class="newer-posts" href="/author/CT/page2/" title="Previous Page">&laquo; Newer Posts</a>
+      
+    
+    <span class="page-number"> Page 3 of 3 </span>
      
 </nav>
     

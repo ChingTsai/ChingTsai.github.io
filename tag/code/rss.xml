@@ -37,7 +37,7 @@
 （詳細可以看<a href="https://brakevalve.github.io/2016/09/10/Apply-machine-learning.html">這裡</a>） 然後再用 prediction 來分類各個天是要買或不買。做了諸多優化之後（詳細可以看<a href="https://brakevalve.github.io/2016/09/09/Some-data-engineering.html">這裡</a>）
 我們達到 80% 的準確度(詳細可以看<a href="https://brakevalve.github.io/2016/09/08/Evaluation.html">這裡</a>），算是一個蠻理想的成效。</p>
 
-<p><img src="assets/images/result.png" alt="fornt_page"></p>
+<p><img src="http://ChingTsai.github.io/chingtsai.github.io//assets/images/result.png" alt="fornt_page"></p>
 
 <p>不過這離我們的目標還有一段距離，因為我們的 prediction 只有做在 83 個熱門遊戲上，所以近期我們會推出，Chrome 插件應用，
 讓使用者可以在瀏覽 Steam 銷售的網頁就可以知道 predict 結果。並且蒐集使用者想要 predict 的遊戲，
